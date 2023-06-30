@@ -42,14 +42,14 @@ body{
 }
 
 .box2 .image {
-  flex: 0 0 160px;
+  flex: 0 0 150px;
   margin-left: 20px;
   overflow: hidden;
 }
 
 .box2 .image img{
-  width: 160px;
-  height: 160px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -114,6 +114,7 @@ p {
 
 .question{
   color: #737270;
+  font-size: 28px;
 }
 
 .answer{
