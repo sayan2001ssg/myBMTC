@@ -1,0 +1,120 @@
+@font-face {
+  font-family: 'CustomFont';
+  src: url('./MazzardH-Black.otf') format('opentype');
+  /* Add other font properties if needed */
+}
+body{
+  font-family: 'CustomFont', sans-serif;
+  font-weight: 300;
+  background-image: url('Untitled.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.header{
+  margin: 50px;
+  font-size: 28px;
+}
+
+.box {
+  display: flex;
+  margin: 40px;
+  margin-top: 60px;
+  padding: 10px;
+  border: 5px solid #ccc;
+  border-radius: 30px;
+  background-color: white;
+}
+
+
+
+.box1 .image {
+  flex: 0 0 200px;
+  margin-right: 20px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.box1 .image img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.box2 .image {
+  flex: 0 0 160px;
+  margin-left: 20px;
+  overflow: hidden;
+}
+
+.box2 .image img{
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding-left: 80px;
+  padding-top: 20px;
+}
+
+.daily{
+  background-color: lightgoldenrodyellow; /* Light golden yellow */
+  color: goldenrod; /* Deep golden yellow */
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+.ac{
+  background-color: lightgreen; /* Light golden yellow */
+  color: darkgreen; /* Deep golden yellow */
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+.link{
+  color: #069683;
+}
+
+
+.reverse {
+  flex-direction: row-reverse;
+}
+
+p {
+  margin: 0;
+}
+
+.footer {
+  margin-top: 10px;
+}
+
+.footer button {
+  width: 100%;
+  padding: 10px 10px;
+  background-color: lightcyan;
+  color: #737270;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 23px;
+}
+
+.gray{
+  color: #737270;
+}
+
+.fare{
+ text-align: right;
+}
+
+.bottom{
+  text-align: center;
+}
