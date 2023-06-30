@@ -68,7 +68,7 @@ body{
   background-color: lightgoldenrodyellow; /* Light golden yellow */
   color: goldenrod; /* Deep golden yellow */
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   font-size: 23px;
   padding: 3px;
 }
@@ -78,7 +78,7 @@ body{
   background-color: #BDF7BD; /* Light green */
   color: #006400; /* Deep green */
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   font-size: 23px;
   padding: 3px;
 }
