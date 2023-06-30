@@ -64,6 +64,7 @@ body{
 }
 
 .daily{
+  width: 65px;
   background-color: lightgoldenrodyellow; /* Light golden yellow */
   color: goldenrod; /* Deep golden yellow */
   border: none;
@@ -73,8 +74,9 @@ body{
 }
 
 .ac{
-  background-color: lightgreen; /* Light golden yellow */
-  color: darkgreen; /* Deep golden yellow */
+  width: 55px;
+  background-color: #BDF7BD; /* Light green */
+  color: #006400; /* Deep green */
   border: none;
   border-radius: 5px;
   font-size: 23px;
@@ -217,7 +219,7 @@ p {
 }
 
 .success-message {
-  color: #1E617A;
+  color: #01B5A5;
   font-size: 60px;
 }
 
@@ -247,6 +249,8 @@ p {
   justify-content: space-between;
   font-size: 30px;
   color: #737270;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .word-container .left-word {
@@ -259,7 +263,7 @@ p {
 
 .horizontal-line {
   border: none;
-  border-top: 1px solid gray;
+  border-top: 3px solid gray;
   margin: 20px 0;
 }
 
