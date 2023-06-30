@@ -3,12 +3,12 @@
 <head>
   <title>BMTC BUS PASS</title>
   <link rel="stylesheet" href="styles.css">
-  
 </head>
-<body>
+
+<body onload="changeImage()">
   <div class="header">
     <p style="color: white;">
-      &#x1F519 Your Bus Pass
+      &#x2190 Your Bus Pass
     </p>
   </div>
   <div class="box1 box">
@@ -17,62 +17,100 @@
     </div>
     <div class="text" style="padding-top: 0px;">
       <p>
-        <h2 style="font-size: 35px;">Vajra Gold Day Pass</h2>
+        <h2 style="font-size: 50px;">Vajra Gold Day Pass</h2>
       </p>
       <div >
-        <button class="daily">Daily</button>
+        <button class="daily">Daily</button> &nbsp  &nbsp
         <button class="ac">AC</button>
       </div>
       <br><p class="gray">Pass no: TPASS1305114</p><br>
-      <p style="text-decoration: underline; font-size:17px;" class="link">Click here to view validations instructions</p><br><br>
+      <p style="text-decoration: underline; font-size:17px;" class="link">Click here to view validation instructions</p><br><br>
       <div class="footer">
-        <!-- <img src="qr-code.png" alt="Image" width="26px" height="26px" style="background-color: #117F99; float: left;"> -->
-        <button>Scan conductor QR for validation</button>
-        
+        <img src="qr-code.png" alt="Image" width="35px" height="35px" style="background-color: #117F99; float: left;">
+        <button id="scan-button">Scan conductor QR for validation</button>    
       </div>
     </div>
   </div>
+  <div id="video-container">
+    <video id="video"></video>
+  </div>
+  <div id="loading-modal">
+    <div class="loader"></div>
+    <p class="loading-text">Please wait while we validate your pass.</p>
+  </div>
+  <div id="modal" class="success-modal">
+    <img src="success.jpg" alt="Image" width="300px" height="300px">
+    <p class="success-message">Self verification done successfully</p>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="word-container">
+      <span class="left-word">Pass number</span>
+      <span class="right-word">TPASS130511</span>
+    </div>
+    <br>
+
+    <div class="word-container">
+      <span class="left-word">Pass type</span>
+      <span class="right-word">daily</span>
+    </div>
+    <br>
+
+    <div class="word-container">
+      <span class="left-word">Pass valid till</span>
+      <span id= "date4" class="right-word"></span>
+    </div>
+    <br>
+    <hr class="horizontal-line">
+
+    <div class="word-container">
+      <span class="left-word">Pass fare</span>
+      <span class="right-word">₹ 120</span>
+    </div>
+    <br>
+
+    <button id="modal-button">OK</button>
+  </div>
+  <div id="overlay"></div>
   <p class="header">Booking details</p>
   <div class="box2 box reverse">
     <div class="image">
       <img src="sayan.jpg" alt="Image">
     </div>
-    <!-- <div>
-        <span>Pass fare</span>
-        <span>₹120</span>
-    </div> -->
     <div class="text">
       <p class="gray">Passenger Name</p>
-      <p style="font-size: 25px;">Sayan Sengupta</p>
+      <p style="font-size: 30px;">Sayan Sengupta</p>
       <br>
       <p class="gray">Identification Type</p>
-      <p style="font-size: 25px;">Aadhaar Card</p>
+      <p style="font-size: 30px;">Aadhaar Card</p>
       <br>
       <p class="gray">Identification number (Last 4 digits)</p>
-      <p style="font-size: 25px;">8350</p>
+      <p style="font-size: 30px;">8350</p>
       <br>
       <p class="gray">Pass purchase date</p>
-      <p id="date1" style="font-size: 25px;"></p>
+      <p id="date1" style="font-size: 30px;"></p>
       <br>
       <p class="gray">Pass valid from</p>
-      <p id="date2" style="font-size: 25px;"></p>
+      <p id="date2" style="font-size: 30px;"></p>
       <br>
       <p class="gray">Pass valid till</p>
-      <p id="date3" style="font-size: 25px;"></p>
+      <p id="date3" style="font-size: 30px;"></p>
       <br>
       <div class="fare">
         <p class="gray">Pass fare</p>
-        <p style="font-size: 25px;">₹ 120</p>
+        <p style="font-size: 40px;">₹ 120</p>
         <br>
       </div>
       <br>
     </div>
   </div>
   <div class="bottom">
-    <p>Scan the QR Code</p>
-    <img src="qrcode.png" alt="Image" width="400" height="400">
+    <p>Ask conductor to scan the QR code</p><br>
+    <img id="image" src="qrcode.png" alt="Image" width="400" height="400">
   </div>
 
   <script src="date.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
