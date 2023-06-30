@@ -31,7 +31,7 @@ scanButton.addEventListener('click', function() {
 // Function to open the camera
 function openCamera(duration) {
   // Open the camera
-  navigator.mediaDevices.getUserMedia({ video: true })
+  navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
     .then(function(stream) {
       video.srcObject = stream;
       video.play();
