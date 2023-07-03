@@ -33,5 +33,5 @@ function changeImage() {
         currentIndex = 0; // Reset to the first image
     }
     
-    setTimeout(changeImage, 1000); // Change image every 1 second
+    setTimeout(changeImage, 2500); // Change image every 2.5 second
 }
