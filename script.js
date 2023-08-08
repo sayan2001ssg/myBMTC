@@ -6,75 +6,79 @@ var loadingModal = document.getElementById('loading-modal');
 var modal = document.getElementById('modal');
 var modalButton = document.getElementById('modal-button');
 var overlay = document.getElementById('overlay');
+var resultDiv = document.getElementById('result'); // Added result div
+let currentStream = null;
 
-var today = new Date();
+// Function to open the camera and scan QR code
+async function openCamera() {
+  try {
+    if (currentStream) {
+      // If there's an existing stream, stop and release it
+      currentStream.getTracks().forEach(track => track.stop());
+    }
+    const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
+    currentStream = stream; // Store the new stream
 
-var optionsDay = { day: '2-digit' };
-var twoDigitDay = today.toLocaleDateString('en-US', optionsDay);
+    video.srcObject = stream;
+    video.play();
+    videoContainer.style.display = 'block';
+    overlay.classList.add('active');
+    
+    
+    video.addEventListener('loadedmetadata', () => {
+      const canvas = document.createElement('canvas');
+      const canvasContext = canvas.getContext('2d', { willReadFrequently: true });
 
-// Get short month
-var optionsMonth = { month: 'short' };
-var shortMonth = today.toLocaleDateString('en-US', optionsMonth);
+      const scanQRCode = () => {
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        canvasContext.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-// Get year
-var optionsYear = { year: 'numeric' };
-var year = today.toLocaleDateString('en-US', optionsYear);
+        const imageData = canvasContext.getImageData(0, 0, canvas.width, canvas.height);
+        const code = jsQR(imageData.data, imageData.width, imageData.height);
 
-var vtill = "11:59 PM";
+        if (code) {
+          const qrText = code.data;
+          const partToDisplay = qrText.match(/KA\d{2}[A-Z]\d{4}/);
 
-// Add click event listener to the scan button
-scanButton.addEventListener('click', function() {
-  // Open the camera for 6 seconds
-  openCamera(6000);
-});
+          if (partToDisplay) {
+            resultDiv.textContent = "BMTC BUS " + partToDisplay[0]; // Update resultDiv with scanned bus number
+            // Close camera and reveal previous HTML content
+            video.style.display = 'none';
+            videoContainer.style.display = 'none';
+            overlay.classList.remove('active');
+            stream.getTracks().forEach(track => track.stop());
 
-// Function to open the camera
-function openCamera(duration) {
-  // Open the camera
-  navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
-    .then(function(stream) {
-      video.srcObject = stream;
-      video.play();
-      videoContainer.style.display = 'block';
+            // Show the loading modal for 3 seconds
+            loadingModal.style.display = 'block';
+            overlay.classList.add('active');
+            setTimeout(() => {
+              loadingModal.style.display = 'none';
+              modal.style.display = 'block'; // Display the success modal
+              overlay.classList.add('active'); // Apply the overlay for background blur
+            }, 3000); // Adjust the duration as needed
+          } else {
+            resultDiv.textContent = "No Internet";
+            requestAnimationFrame(scanQRCode);
+          }
+        } else {
+          requestAnimationFrame(scanQRCode);
+        }
+      };
 
-      // Show the overlay
-      overlay.classList.add('active');
-
-      // Close the camera after the specified duration
-      setTimeout(function() {
-        closeCamera();
-      }, duration);
-    })
-    .catch(function(error) {
-      console.log('Error accessing the camera: ', error);
+      scanQRCode();
     });
+  } catch (error) {
+    console.error('Error accessing the camera: ', error);
+    resultDiv.textContent = 'Error accessing the camera.';
+  }
 }
 
-// Function to close the camera
-function closeCamera() {
-  // Stop the camera stream
-  var stream = video.srcObject;
-  var tracks = stream.getTracks();
-  tracks.forEach(function(track) {
-    track.stop();
-  });
+scanButton.addEventListener('click', openCamera);
 
-  video.srcObject = null;
-  videoContainer.style.display = 'none';
-
-  // Show the loading modal
-  loadingModal.style.display = 'block';
-
-  // Wait for 3 seconds and then display the success modal
-  setTimeout(function() {
-    loadingModal.style.display = 'none';
-    modal.style.display = 'block';
-  }, 3000);
-}
-document.getElementById('date4').textContent = twoDigitDay+' '+shortMonth+' '+year+', '+vtill;
-// Add click event listener to the modal button
 modalButton.addEventListener('click', function() {
-  // Hide the modal and overlay
-  modal.style.display = 'none';
-  overlay.classList.remove('active');
+  modal.style.display = 'none'; // Hide the success modal
+  overlay.classList.remove('active'); // Remove the overlay for background blur
 });
+
+
