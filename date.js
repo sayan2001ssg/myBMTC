@@ -20,6 +20,7 @@ console.log(twoDigitDay+' '+shortMonth+' '+year+', '+time);
 document.getElementById('date1').textContent = twoDigitDay+' '+shortMonth+' '+year+', '+time;
 document.getElementById('date2').textContent = twoDigitDay+' '+shortMonth+' '+year+', '+vfrom;
 document.getElementById('date3').textContent = twoDigitDay+' '+shortMonth+' '+year+', '+vtill;
+document.getElementById('date4').textContent = twoDigitDay+' '+shortMonth+' '+year+', '+vtill;
 
 var images = ["qrcode.png", "qrcode2.png", "qrcode3.png", "qrcode4.png", "qrcode5.png"];
 var currentIndex = 0;
@@ -33,5 +34,5 @@ function changeImage() {
         currentIndex = 0; // Reset to the first image
     }
     
-    setTimeout(changeImage, 2500); // Change image every 2.5 second
+    setTimeout(changeImage, 1500); // Change image every 2.5 second
 }
