@@ -42,7 +42,8 @@ async function openCamera() {
           const partToDisplay = qrText.match(/KA\d{2}[A-Z]\d{4}/);
 
           if (partToDisplay) {
-            resultDiv.textContent = "BMTC BUS " + partToDisplay[0]; // Update resultDiv with scanned bus number
+            const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true });
+            resultDiv.textContent = "Last Validate time : " + currentTime + "\b\b\bBMTC BUS :  " + partToDisplay[0]; // Update resultDiv with scanned bus number and current time
             // Close camera and reveal previous HTML content
             video.style.display = 'none';
             videoContainer.style.display = 'none';
@@ -80,5 +81,3 @@ modalButton.addEventListener('click', function() {
   modal.style.display = 'none'; // Hide the success modal
   overlay.classList.remove('active'); // Remove the overlay for background blur
 });
-
-
