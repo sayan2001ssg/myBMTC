@@ -39,7 +39,7 @@ async function openCamera() {
 
         if (code) {
           const qrText = code.data;
-          const partToDisplay = qrText.match(/KA\d{2}(?: [A-Z]{2} \d{4}|[A-Z]\d{4})/);
+          const partToDisplay = qrText.match(/KA\d{2}(?: [A-Z]{2} \d{4}| [A-Z] \d{4})/);
 
           if (partToDisplay) {
             const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true });
