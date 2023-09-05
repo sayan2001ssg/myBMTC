@@ -43,7 +43,7 @@ async function openCamera() {
 
           if (partToDisplay) {
             const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true });
-            resultDiv.textContent = "Last Validate time : " + currentTime + "\b\b\bBMTC BUS  " + partToDisplay[0]; // Update resultDiv with scanned bus number and current time
+            resultDiv.innerHTML = "Last Validate time :<br>" + currentTime + "<br><br>BMTC BUS:<br>" + partToDisplay[0]; // Update resultDiv with scanned bus number and current time
             // Close camera and reveal previous HTML content
             video.style.display = 'none';
             videoContainer.style.display = 'none';
