@@ -144,12 +144,22 @@ p {
   font-size: 23px;
 }
 
+
+
 .box3{
+  width: 90%;
   background-color: #BDF7BD;
   margin-left: 50px;
   margin-right:50px ;
   border-radius: 3%;
 }
+
+.box3 button{
+  
+  background-color: #BDF7BD;
+  border: none;
+}
+
 
 .busnumber{
   text-align: left;

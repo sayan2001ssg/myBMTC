@@ -39,11 +39,14 @@ async function openCamera() {
 
         if (code) {
           const qrText = code.data;
-          const partToDisplay = qrText.match(/KA\s?\d{2}\s?[A-Z]{1,2}\s?\d{4}/);
+          const partToDisplay = qrText.match(/KA\s?\d{2}\s?[A-Z]{1,2}\s?\d{3,4}/);
 
           if (partToDisplay) {
             const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true });
-            resultDiv.innerHTML = "Last Validate time :<br>" + currentTime + "<br><br>BMTC BUS:<br>" + partToDisplay[0]; // Update resultDiv with scanned bus number and current time
+            resultDiv.innerHTML = '<span style="font-size: 25px; color: #006400;">Last Validate time :</span><br>' + 
+                                  '<span style="font-size: 50px; color: grey; font-weight: normal;">' + currentTime + '</span><br><br>' + 
+                                  '<span style="font-size: 25px; color: #006400;">BMTC BUS:</span><br>' + 
+                                  '<span style="font-size: 50px; color: grey; font-weight: normal;">' + partToDisplay[0] + '</span>'; // Update resultDiv with scanned bus number and current time
             // Close camera and reveal previous HTML content
             video.style.display = 'none';
             videoContainer.style.display = 'none';
